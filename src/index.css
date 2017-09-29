@@ -1,0 +1,146 @@
+#app {
+  height: 100vh;
+  padding: 50px;
+}
+
+.m-menu {
+  border-bottom: 1px solid #d7d8dc;
+  display: flex;
+  padding: 0;
+  position: relative;
+}
+
+.m-menu-wrapper {
+  display: block;
+  height: 30px;
+  overflow: hidden;
+  padding: 0;
+  max-width: 517px;
+}
+
+@media (min-width: 1281px) {
+  .m-menu-wrapper {
+    max-width: 782px;
+  }
+}
+
+.m-menu-item {
+  border-bottom: 2px solid transparent;
+  color: #94999f;
+  cursor: pointer;
+  display: inline-block;
+  font: 500 12px/21px 'Roboto', sans-serif;
+  height: 30px;
+  margin: 0;
+  padding: 0 0 7px;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.m-menu-item + .m-menu-item {
+  margin-left: 11px;
+}
+
+.m-menu-item:hover {
+  color: #ff6347;
+}
+
+.m-menu-item._visible {
+  display: block !important;
+}
+
+.m-menu-item._selected {
+  border-bottom-color: #ff4800;
+  color: #36393f;
+  font-weight: bold;
+}
+
+.m-menu-more {
+  border-bottom: 2px solid transparent;
+  color: #94999f;
+  cursor: pointer;
+  display: none;
+  flex: 0 0 43px;
+  font: 500 12px/21px 'Roboto', sans-serif;
+  height: 30px;
+  margin: 0 0 0 15px;
+  padding: 0 0 7px 1px;
+  position: relative;
+  text-transform: uppercase;
+  width: 43px;
+}
+
+.m-menu-more::after {
+  content: '';
+  border: 4px solid transparent;
+  border-top-color: #94999f;
+  border-bottom: none;
+  margin: -6px 0 0;
+  position: absolute;
+  top: 50%;
+  right: 1px;
+}
+
+.m-menu-more._visible {
+  display: block;
+}
+
+.m-menu-more._selected {
+  border-bottom-color: #ff4800;
+  color: #36393f;
+  font-weight: bold;
+}
+
+.m-menu-more._selected::after {
+  border-top-color: #36393f;
+}
+
+.m-menu-more:hover {
+  color: #ff4800;
+}
+
+.m-menu-more:hover::after {
+  border: 4px solid transparent;
+  border-bottom-color: #ff4800;
+  border-top: none;
+}
+
+.m-menu-more:hover .m-menu-more-items {
+  display: block;
+}
+
+.m-menu-more-items {
+  position: absolute;
+  top: 100%;
+  right: -6px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2);
+  display: none;
+  text-align: left;
+  padding: 6px 22px 6px 10px;
+  width: 214px;
+  z-index: 3;
+}
+
+.m-menu-more-items > .m-menu-item {
+  color: #36393f;
+  border: none;
+  display: none;
+  height: auto;
+  line-height: 16px;
+  margin: 0;
+  padding: 6px 0;
+  text-align: left;
+}
+
+.m-menu-more-items > .m-menu-item:hover {
+  color: #ff4800;
+}
+
+.m-menu-more-items > .m-menu-item._selected {
+  color: #ff4800;
+  font-weight: 500;
+}
