@@ -18,7 +18,7 @@ class MoreMenu extends Component {
 
   setHiddenItems(newHiddenElements) {
     this.setState({
-      hiddenElemens: [...newHiddenElements]
+      hiddenElemens: newHiddenElements
     });
   }
 
