@@ -19,10 +19,9 @@ const items = [
   {id: '13', label: 'Weightlifting'},
   {id: '14', label: 'BMX Racing'},
   {id: '15', label: 'Trampoline'}
-]
+];
 
 ReactDOM.render(
   <MoreMenu items={items} />,
   document.getElementById('app')
 );
-

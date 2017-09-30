@@ -1,6 +1,8 @@
 #app {
   height: 100vh;
+  margin: 0 auto;
   padding: 50px;
+  max-width: 800px;
 }
 
 .m-menu {
@@ -15,13 +17,6 @@
   height: 30px;
   overflow: hidden;
   padding: 0;
-  max-width: 517px;
-}
-
-@media (min-width: 1281px) {
-  .m-menu-wrapper {
-    max-width: 782px;
-  }
 }
 
 .m-menu-item {
@@ -47,29 +42,24 @@
   color: #ff6347;
 }
 
-.m-menu-item._visible {
-  display: block !important;
-}
-
 .m-menu-item._selected {
   border-bottom-color: #ff4800;
   color: #36393f;
-  font-weight: bold;
 }
 
 .m-menu-more {
   border-bottom: 2px solid transparent;
   color: #94999f;
   cursor: pointer;
-  display: none;
-  flex: 0 0 43px;
+  display: block;
+  flex: 0 0 50px;
   font: 500 12px/21px 'Roboto', sans-serif;
   height: 30px;
   margin: 0 0 0 15px;
   padding: 0 0 7px 1px;
   position: relative;
   text-transform: uppercase;
-  width: 43px;
+  width: 50px;
 }
 
 .m-menu-more::after {
@@ -83,14 +73,9 @@
   right: 1px;
 }
 
-.m-menu-more._visible {
-  display: block;
-}
-
 .m-menu-more._selected {
   border-bottom-color: #ff4800;
   color: #36393f;
-  font-weight: bold;
 }
 
 .m-menu-more._selected::after {
@@ -128,7 +113,7 @@
 .m-menu-more-items > .m-menu-item {
   color: #36393f;
   border: none;
-  display: none;
+  display: block;
   height: auto;
   line-height: 16px;
   margin: 0;

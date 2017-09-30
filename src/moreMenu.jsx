@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 
-import MainMenuItem from './item.jsx';
-import MoreMenuItem from './moreItem.jsx';
+import MainBlock from './mainBlock.jsx'
+import MoreBlock from './moreBlock.jsx'
 
 class MoreMenu extends Component {
   constructor(props) {
     super(props);
     
     this.onClickHandler = this.onClickHandler.bind(this);
-    this.onHandleDOM = this.onHandleDOM.bind(this);
-
-    this.firstItem = true;
-    this.baseTopOffset = null;
+    this.setHiddenItems = this.setHiddenItems.bind(this);
 
     this.state = {
       hiddenElemens: [],
@@ -19,65 +16,23 @@ class MoreMenu extends Component {
     }
   }
 
-  onClickHandler(label) {
+  setHiddenItems(newHiddenElements) {
     this.setState({
-      selectedItem: label.toLowerCase()
+      hiddenElemens: [...newHiddenElements]
     });
   }
 
-  onHandleDOM(item, label) {
-    let { top } = item.getBoundingClientRect();
-
-    if (this.firstItem) {
-      this.baseTopOffset = top;
-      this.firstItem = false;
-    }
-
-    if (top > (this.baseTopOffset + 10)) {
-      this.setState(prevState => ({
-        hiddenElemens: [...prevState.hiddenElemens, label]
-      }))
-    }
+  onClickHandler(e) {
+    this.setState({
+      selectedItem: e.target.getAttribute('data-label').toLowerCase()
+    });
   }
-
 
   render() {
-      const mainItems = this.props.items.map(sport => {
-
-      let isSelected = sport.label.toLowerCase() === this.state.selectedItem.toLowerCase() ? " _selected" : "";
-
-      return (
-        <MainMenuItem 
-          onHandleDOM={this.onHandleDOM}
-          onClickHandler={this.onClickHandler}
-          isSelected={isSelected} 
-          label={sport.label}
-          key={sport.id}
-          />
-      );
-    });
-
-      const moreItems = this.props.items.map(sport => {
-
-      return (
-        <MoreMenuItem 
-          hiddenElemens={this.state.hiddenElemens}
-          onClickHandler={this.onClickHandler}
-          label={sport.label}
-          key={sport.id}
-          />
-      );
-    });
-
-      const moreBlock = <div className="m-menu-more js-mm-more _visible">Еще<div className="m-menu-more-items js-mm-more-items">{moreItems}</div></div>;
-
     return (
       <div className="m-menu js-more-menu">
-        <div className="m-menu-wrapper js-mm-items">
-          {mainItems}
-        </div>
-        {this.state.hiddenElemens.length ? moreBlock : false}
-        
+        <MainBlock items={this.props.items} selectedItem={this.state.selectedItem} onClickHandler={this.onClickHandler} setHiddenItems={this.setHiddenItems} />
+        <MoreBlock items={this.state.hiddenElemens} selectedItem={this.state.selectedItem} onClickHandler={this.onClickHandler} />
       </div>
     )
   }
