@@ -23,17 +23,15 @@ class MainBlock extends Component {
   }
 
   getHiddenItems(topOffset, items) {
-    let firstHiddenItemIndex = null,
-      newHiddenElements = [];
+    let newHiddenElements = [];
+    const BALANCE_TOP_OFFSET = 5;
 
-    Array.prototype.forEach.call(items, (item, index) => {
-      if (item.getBoundingClientRect().top > (topOffset + 5) && !firstHiddenItemIndex)
-      firstHiddenItemIndex = index;
-    });
-
-    if (firstHiddenItemIndex) {
-      newHiddenElements = this.props.items.slice(firstHiddenItemIndex);
-      this.props.setHiddenItems(newHiddenElements);
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].getBoundingClientRect().top > (topOffset + BALANCE_TOP_OFFSET)) {
+        newHiddenElements = this.props.items.slice(i);
+        this.props.setHiddenItems(newHiddenElements);
+        return;
+      }
     }
   }
 
